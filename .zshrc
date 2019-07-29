@@ -1,6 +1,6 @@
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/dave/.oh-my-zsh"
+export ZSH="/Users/davidmarcantonio/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -12,6 +12,12 @@ POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+
+POWERLEVEL9K_DIR_HOME_BACKGROUND='blue'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='green'
+POWERLEVEL9K_DIR_ETC_BACKGROUND='blue'
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='green'
+
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_beginning"
 POWERLEVEL9K_RVM_BACKGROUND="black"
@@ -23,18 +29,18 @@ POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
 POWERLEVEL9K_RVM_BACKGROUND="black"
 POWERLEVEL9K_RVM_FOREGROUND="249"
 POWERLEVEL9K_RVM_VISUAL_IDENTIFIER_COLOR="red"
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='green'
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='white'
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='white'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='green'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='black'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='blue'
 POWERLEVEL9K_FOLDER_ICON=''
 POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND="black"
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND="white"
+POWERLEVEL9K_STATUS_ERROR_BACKGROUND="white"
+POWERLEVEL9K_STATUS_ERROR_FOREGROUND="black"
 POWERLEVEL9K_STATUS_VERBOSE=false
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0.1
 POWERLEVEL9K_VCS_UNTRACKED_ICON='\u25CF'
@@ -73,7 +79,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time rvm time)
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -100,7 +106,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time rvm time)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git zsh-autosuggestions history-substring-search dirhistory zsh-syntax-highlighting docker-compose docker docker-machine dotenv emoji history laravel5 last-working-dir node postgres sublime web-search zsh-256color osx adb
+  git zsh-autosuggestions history-substring-search dirhistory zsh-syntax-highlighting docker-compose docker docker-machine dotenv emoji history laravel5 last-working-dir node postgres sublime web-search zsh-256color osx adb kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -141,6 +147,11 @@ alias plat="cd ~/code/platform"
 alias platform="plat"
 alias ga="git add --all && git status -s"
 alias gfmp="git fetch && git merge origin/master && git push -u"
+unalias gcam
+alias gcam="git commit -m"
+unalias gp
+alias gp="git pull"
+
 
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -166,7 +177,8 @@ _-accept-line () {
 }
 zle -N accept-line _-accept-line
 
-export NVM_DIR=~/.nvm
- [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=081"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
